@@ -99,7 +99,7 @@ class Kernel:
         passed to respond().
 
         """
-        start = time.clock()
+        start = time.time()
         if brainFile:
             self.loadBrain(brainFile)
 
@@ -119,7 +119,7 @@ class Kernel:
             print(self._respond(cmd, self._globalSessionID))
             
         if self._verboseMode:
-            print("Kernel bootstrap completed in %.2f seconds" % (time.clock() - start))
+            print("Kernel bootstrap completed in %.2f seconds" % (time.time() - start))
 
     def verbose(self, isVerbose = True):
         """Enable/disable verbose output mode."""
@@ -153,19 +153,19 @@ class Kernel:
 
         """
         if self._verboseMode: print("Loading brain from %s..." % filename, end=' ')
-        start = time.clock()
+        start = time.time()
         self._brain.restore(filename)
         if self._verboseMode:
-            end = time.clock() - start
+            end = time.time() - start
             print("done (%d categories in %.2f seconds)" % (self._brain.numTemplates(), end))
 
     def saveBrain(self, filename):
         """Dump the contents of the bot's brain to a file on disk."""
         if self._verboseMode: print("Saving brain to %s..." % filename, end=' ')
-        start = time.clock()
+        start = time.time()
         self._brain.save(filename)
         if self._verboseMode:
-            print("done (%.2f seconds)" % (time.clock() - start))
+            print("done (%.2f seconds)" % (time.time() - start))
 
     def getPredicate(self, name, sessionID = _globalSessionID):
         """Retrieve the current value of the predicate 'name' from the
@@ -280,7 +280,7 @@ class Kernel:
         """
         for f in glob.glob(filename):
             if self._verboseMode: print("Loading %s..." % f, end=' ')
-            start = time.clock()
+            start = time.time()
             # Load and parse the AIML file.
             parser = AimlParser.create_parser()
             handler = parser.getContentHandler()
@@ -295,7 +295,7 @@ class Kernel:
                 self._brain.add(key,tem)
             # Parsing was successful.
             if self._verboseMode:
-                print("done (%.2f seconds)" % (time.clock() - start))
+                print("done (%.2f seconds)" % (time.time() - start))
 
     def respond(self, input, sessionID = _globalSessionID):
         """Return the Kernel's response to the input string."""
