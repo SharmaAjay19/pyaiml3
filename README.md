@@ -1,8 +1,11 @@
-## Installation:
-```git clone https://github.com/SharmaAjay19/pyaiml3.git
+### Installation
+```
+git clone https://github.com/SharmaAjay19/pyaiml3.git
 cd pyaiml3
-python setup.py install```
+python setup.py install
+```
 
+### Information
 PyAIML -- The Python AIML Interpreter
 author: Cort Stratton (cort@users.sourceforge.net)
 web: http://pyaiml.sourceforge.net/
